@@ -15,7 +15,7 @@ import { ProductSold } from './productSold.model';
  * author: dannielf
  */
 export interface Buy {
-  id: string;
+  id?: string;
   idType: string;
   idNumber: string;
   clientName: string;
