@@ -10,6 +10,7 @@ import { ProductComponent } from './product/product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { productReducer } from './product/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './product/product.effects';
 
 @NgModule({
   declarations: [AppComponent, ProductComponent, NotFoundComponent],
@@ -19,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     HttpClientModule,
     StoreModule.forRoot({ product: productReducer }, {}),
     BrowserAnimationsModule,
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ProductEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
