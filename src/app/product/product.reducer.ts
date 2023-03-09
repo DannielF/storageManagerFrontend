@@ -1,16 +1,23 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, createSelector, on } from '@ngrx/store';
 import { Product } from '../core/model/product.model';
 import * as ProductActions from './product.actions';
 
-export interface ProductState extends Product {}
+export interface ProductState {
+  products: Product[];
+
+  product: Product;
+}
 
 export const initialState: ProductState = {
-  id: '',
-  name: '',
-  inInventory: 0,
-  enabled: true,
-  min: 0,
-  max: 0,
+  products: [],
+  product: {
+    id: '',
+    name: '',
+    inInventory: 0,
+    enabled: false,
+    min: 0,
+    max: 0,
+  },
 };
 
 export const productReducer = createReducer(
@@ -19,4 +26,11 @@ export const productReducer = createReducer(
     ...state,
     ...products,
   }))
+);
+
+export const getAppState = (state: ProductState) => state;
+
+export const getProducts = createSelector(
+  getAppState,
+  (state: ProductState) => state.products
 );
