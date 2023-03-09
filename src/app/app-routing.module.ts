@@ -4,7 +4,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
-  { path: 'product', component: ProductComponent },
+  { path: '', component: ProductComponent },
   {path:'**', component: NotFoundComponent}
 ];
 
