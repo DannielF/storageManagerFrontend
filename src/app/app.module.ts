@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProductComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
