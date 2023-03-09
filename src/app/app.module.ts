@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './product/product.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductComponent],
+  declarations: [AppComponent, ProductComponent, NotFoundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
