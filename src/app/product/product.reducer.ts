@@ -21,18 +21,11 @@ export const initialState: ProductState = {
 
 export const productReducer = createReducer(
   initialState,
-  on(ProductActions.loadProducts, (state) => {
-    console.debug('State load', state);
-    return {
-      ...state,
-    };
-  }),
-  on(ProductActions.productsLoadedSuccess, (state, { payload }) => {
-    console.debug('State loaded', state);
-    console.debug('Products', payload);
-    return {
-      ...state,
-      products: payload,
-    };
-  })
+  on(ProductActions.loadProducts, (state) => ({
+    ...state,
+  })),
+  on(ProductActions.productsLoadedSuccess, (state, { payload }) => ({
+    ...state,
+    products: payload,
+  }))
 );
