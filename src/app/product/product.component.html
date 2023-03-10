@@ -2,3 +2,4 @@
 <div *ngFor="let product of products$ | async">
   {{ product.name }}
 </div>
+<div>products: {{ products$ | async | json }}</div>
