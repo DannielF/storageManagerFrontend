@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Product } from '../core/model/product.model';
+import * as ProductActions from './product.actions';
+import * as ProductSelectors from './product.selector';
 
 @Component({
   selector: 'app-product',
@@ -10,12 +12,12 @@ import { Product } from '../core/model/product.model';
 })
 export class ProductComponent implements OnInit {
   products$: Observable<Product[]> = this.store.select(
-    (state) => state.products
+    ProductSelectors.getProducts
   );
 
-  constructor(private store: Store<{ products: Product[] }>) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.store.dispatch({ type: '[Product] Load Products' });
+    this.store.dispatch(ProductActions.loadProducts());
   }
 }

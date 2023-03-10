@@ -6,10 +6,7 @@ export enum ProductActionTypes {
   ProductsLoadedSuccess = '[Product] Products Loaded Success',
 }
 
-export const loadProducts = createAction(
-  ProductActionTypes.LoadProducts,
-  props<{ products: Product[] }>()
-);
+export const loadProducts = createAction(ProductActionTypes.LoadProducts);
 
 export const productsLoadedSuccess = createAction(
   ProductActionTypes.ProductsLoadedSuccess,

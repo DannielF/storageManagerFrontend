@@ -4,7 +4,6 @@ import * as ProductActions from './product.actions';
 
 export interface ProductState {
   products: Product[];
-
   product: Product;
 }
 
@@ -22,15 +21,11 @@ export const initialState: ProductState = {
 
 export const productReducer = createReducer(
   initialState,
+  on(ProductActions.loadProducts, (state) => ({
+    ...state,
+  })),
   on(ProductActions.productsLoadedSuccess, (state, { products }) => ({
     ...state,
-    ...products,
+    products: [...state.products, ...products],
   }))
-);
-
-export const getAppState = (state: ProductState) => state;
-
-export const getProducts = createSelector(
-  getAppState,
-  (state: ProductState) => state.products
 );
