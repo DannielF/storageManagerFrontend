@@ -49,11 +49,23 @@
         #input
         maxlength="10"
         placeholder="Ex. Nougat"
-        type="text"
+        required
         formControlName="name"
       />
       <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
     </mat-form-field>
+    <div
+      *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="name?.errors?.['required']">Name is required.</div>
+      <div *ngIf="name?.errors?.['maxlength']">
+        Name has more than 10 characters.
+      </div>
+      <div *ngIf="name?.errors?.['minlength']">
+        Name must be at least 3 characters.
+      </div>
+    </div>
     <mat-form-field hintLabel="Numeric value" appearance="fill">
       <mat-label>Inventory</mat-label>
       <input
@@ -61,44 +73,75 @@
         #input
         maxlength="10"
         placeholder="Ex. 10"
-        type="number"
+        required
         formControlName="inInventory"
       />
       <mat-hint align="end">1234567890</mat-hint>
     </mat-form-field>
+    <div
+      *ngIf="
+        inInventory?.invalid && (inInventory?.dirty || inInventory?.touched)
+      "
+      class="alert alert-danger"
+    >
+      <div *ngIf="inInventory?.errors?.['required']">A value is required.</div>
+      <div *ngIf="inInventory?.errors?.['min']">
+        A value must be greater than 0.
+      </div>
+    </div>
     <mat-form-field hintLabel="Boolean value" appearance="fill">
       <mat-label>Enabled</mat-label>
       <input
         matInput
         #input
         placeholder="Ex. false"
-        type="text"
+        required
         formControlName="enabled"
       />
       <mat-hint align="end">true-false</mat-hint>
     </mat-form-field>
-    <mat-form-field hintLabel="Min. Inventory" appearance="fill">
+    <div
+      *ngIf="enabled?.invalid && (enabled?.dirty || enabled?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="enabled?.errors?.['required']">A value is required.</div>
+    </div>
+    <mat-form-field hintLabel="Numeric value" appearance="fill">
       <mat-label>Min. inInventory</mat-label>
       <input
         matInput
         #input
         placeholder="Ex. 5"
-        type="number"
+        required
         formControlName="min"
       />
       <mat-hint align="end">1234567890</mat-hint>
     </mat-form-field>
-    <mat-form-field hintLabel="Max. inInventory" appearance="fill">
+    <div
+      *ngIf="min?.invalid && (min?.dirty || min?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="min?.errors?.['required']">A value is required.</div>
+      <div *ngIf="min?.errors?.['min']">A value must be greater than 0.</div>
+    </div>
+    <mat-form-field hintLabel="Numeric value" appearance="fill">
       <mat-label>Max. inInventory</mat-label>
       <input
         matInput
         #input
-        placeholder="Ex. 5"
-        type="number"
+        placeholder="Ex. 10"
+        required
         formControlName="max"
       />
       <mat-hint align="end">1234567890</mat-hint>
     </mat-form-field>
+    <div
+      *ngIf="max?.invalid && (max?.dirty || max?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="max?.errors?.['required']">A value is required.</div>
+      <div *ngIf="max?.errors?.['min']">A value must be greater than 1.</div>
+    </div>
     <button
       mat-raised-button
       color="primary"
