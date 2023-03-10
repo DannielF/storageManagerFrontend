@@ -27,5 +27,13 @@ export const productReducer = createReducer(
   on(ProductActions.productsLoadedSuccess, (state, { payload }) => ({
     ...state,
     products: payload,
+  })),
+  on(ProductActions.createProduct, (state, { payload }) => ({
+    ...state,
+    product: payload,
+  })),
+  on(ProductActions.createProductSuccess, (state, { payload }) => ({
+    ...state,
+    products: [...state.products, payload],
   }))
 );

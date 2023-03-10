@@ -13,4 +13,7 @@ export class ProductService {
   getAllProducts() {
     return this.http.get<Product[]>(`${this.apiUrl}/product`);
   }
+  createProduct(product: Product) {
+    return this.http.post<Product>(`${this.apiUrl}/product`, product);
+  }
 }

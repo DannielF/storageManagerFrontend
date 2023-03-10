@@ -20,6 +20,21 @@ export class ProductEffects {
       )
     )
   );
+  createProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.createProduct),
+      exhaustMap((action) =>
+        this.productService.createProduct(action.payload).pipe(
+          map((product) => ({
+            type: ProductActions.createProductSuccess.type,
+            payload: product,
+          })),
+          catchError(() => of({ type: '[Product] Create Product Error' }))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private productService: ProductService
