@@ -3,9 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 import { ProductService } from './product.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProductEffects {
   loadProducts$ = createEffect(() =>
     this.actions$.pipe(
