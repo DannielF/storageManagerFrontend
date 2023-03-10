@@ -1,6 +1,9 @@
 {
   "name": "frontend-storage-manager",
-  "version": "0.0.0",
+  "author": {
+    "name": "dannielf"
+  },
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
