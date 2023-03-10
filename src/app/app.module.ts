@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { productReducer } from './product/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './product/product.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent, ProductComponent, NotFoundComponent],
@@ -21,6 +22,7 @@ import { ProductEffects } from './product/product.effects';
     StoreModule.forRoot({ product: productReducer }, {}),
     BrowserAnimationsModule,
     EffectsModule.forRoot([ProductEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],
