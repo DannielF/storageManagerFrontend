@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './product/product.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialModule } from './material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, ProductComponent, NotFoundComponent],
@@ -25,6 +26,7 @@ import { MaterialModule } from './material/material.module';
     EffectsModule.forRoot([ProductEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,36 +1,111 @@
-<table
-  mat-table
-  [dataSource]="products$"
-  class="mat-elevation-z8"
-  aria-describedby="Product list"
->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>Id</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
-  <ng-container matColumnDef="inInventory">
-    <th mat-header-cell *matHeaderCellDef>Inventory</th>
-    <td mat-cell *matCellDef="let element">{{ element.inInventory }}</td>
-  </ng-container>
-  <ng-container matColumnDef="enabled">
-    <th mat-header-cell *matHeaderCellDef>Enabled</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.enabled == true ? "Yes" : "No" }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="min">
-    <th mat-header-cell *matHeaderCellDef>Min.</th>
-    <td mat-cell *matCellDef="let element">{{ element.min }}</td>
-  </ng-container>
-  <ng-container matColumnDef="max">
-    <th mat-header-cell *matHeaderCellDef>Max.</th>
-    <td mat-cell *matCellDef="let element">{{ element.max }}</td>
-  </ng-container>
+<div>
+  <table
+    mat-table
+    [dataSource]="products$"
+    class="mat-elevation-z8"
+    aria-describedby="Product list"
+  >
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="inInventory">
+      <th mat-header-cell *matHeaderCellDef>Inventory</th>
+      <td mat-cell *matCellDef="let element">{{ element.inInventory }}</td>
+    </ng-container>
+    <ng-container matColumnDef="enabled">
+      <th mat-header-cell *matHeaderCellDef>Enabled</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.enabled == true ? "Yes" : "No" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="min">
+      <th mat-header-cell *matHeaderCellDef>Min.</th>
+      <td mat-cell *matCellDef="let element">{{ element.min }}</td>
+    </ng-container>
+    <ng-container matColumnDef="max">
+      <th mat-header-cell *matHeaderCellDef>Max.</th>
+      <td mat-cell *matCellDef="let element">{{ element.max }}</td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<div class="form-container">
+  <div class="title-form">
+    <h2>Product form</h2>
+  </div>
+  <form [formGroup]="product" (ngSubmit)="onSubmit()">
+    <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+      <mat-label>Product name</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="Ex. Nougat"
+        type="text"
+        formControlName="name"
+      />
+      <mat-hint align="end">{{ input.value.length }}/10</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Numeric value" appearance="fill">
+      <mat-label>Inventory</mat-label>
+      <input
+        matInput
+        #input
+        maxlength="10"
+        placeholder="Ex. 10"
+        type="number"
+        formControlName="inInventory"
+      />
+      <mat-hint align="end">1234567890</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Boolean value" appearance="fill">
+      <mat-label>Enabled</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="Ex. false"
+        type="text"
+        formControlName="enabled"
+      />
+      <mat-hint align="end">true-false</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Min. Inventory" appearance="fill">
+      <mat-label>Min. inInventory</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="Ex. 5"
+        type="number"
+        formControlName="min"
+      />
+      <mat-hint align="end">1234567890</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max. inInventory" appearance="fill">
+      <mat-label>Max. inInventory</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="Ex. 5"
+        type="number"
+        formControlName="max"
+      />
+      <mat-hint align="end">1234567890</mat-hint>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!product.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
