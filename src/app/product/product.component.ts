@@ -14,6 +14,14 @@ export class ProductComponent implements OnInit {
   products$: Observable<Product[]> = this.store.select(
     ProductSelectors.getProducts
   );
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'inInventory',
+    'enabled',
+    'min',
+    'max',
+  ];
 
   constructor(private store: Store) {}
 

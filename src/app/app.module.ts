@@ -12,6 +12,7 @@ import { productReducer } from './product/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './product/product.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [AppComponent, ProductComponent, NotFoundComponent],
@@ -23,6 +24,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     BrowserAnimationsModule,
     EffectsModule.forRoot([ProductEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
