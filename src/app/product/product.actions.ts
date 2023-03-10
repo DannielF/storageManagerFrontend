@@ -10,5 +10,5 @@ export const loadProducts = createAction(ProductActionTypes.LoadProducts);
 
 export const productsLoadedSuccess = createAction(
   ProductActionTypes.ProductsLoadedSuccess,
-  props<{ products: Product[] }>()
+  props<{ payload: Product[] }>()
 );
